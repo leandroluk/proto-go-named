@@ -90,3 +90,10 @@ need to pin a specific one.
 cd proto && buf generate   # regenerate proto/golang and proto/testdata
 go test ./...              # smoke test: wire + JSON stay standard-compliant
 ```
+
+## CI
+
+- `.github/workflows/go.yml` — build, vet, test the Go module.
+- `.github/workflows/buf.yml` — lint/breaking-change check on PRs, `buf push`
+  to the BSR on merge to `master`. Requires a `BUF_TOKEN` repo secret ([create
+  one](https://buf.build/docs/bsr/authentication/#create-an-api-token)).
