@@ -2,7 +2,7 @@ name: buf
 
 on:
   push:
-    branches: [master]
+    branches: [main]
   pull_request:
     types: [opened, synchronize, reopened, labeled, unlabeled]
   delete:
@@ -20,4 +20,4 @@ jobs:
         with:
           token: ${{ secrets.BUF_TOKEN }}
           input: proto
-          push: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
+          push: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
