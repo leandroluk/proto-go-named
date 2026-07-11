@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package golang;
+
+import "google/protobuf/descriptor.proto";
+
+option go_package = "github.com/leandroluk/proto-go-named/gen/golang";
+
+// Range 50000-99999 is reserved for internal/private use per
+// https://protobuf.dev/programming-guides/proto2/#extensions (not registered on the
+// global extension registry, so must not be published as a shared BSR dependency).
+extend google.protobuf.FieldOptions {
+  // Overrides the Go struct field (and getter) identifier generated for this
+  // field, bypassing protoc-gen-go's default snake_case -> CamelCase
+  // conversion (which does not special-case initialisms like ID, URL, API).
+  //
+  // Example:
+  //   string user_id = 1 [(golang.field_name) = "UserID"];
+  string field_name = 90001;
+}

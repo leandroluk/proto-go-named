@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package testdata;
+
+import "golang/options.proto";
+
+option go_package = "github.com/leandroluk/proto-go-named/gen/testdata";
+
+message FooInput {
+  string user_id = 1 [(golang.field_name) = "UserID"];
+  string tenant_url = 2 [(golang.field_name) = "TenantURL"];
+  string name = 3;
+}
